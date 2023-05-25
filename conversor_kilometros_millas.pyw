@@ -19,28 +19,28 @@ ventana.geometry("400x400")
 ventana.resizable(False, False)
 
 style = ttk.Style()
-style.configure("TFrame", background="#ECECEC")
-style.configure("TLabel", background="#ECECEC", font=("Arial", 12))
-style.configure("TEntry", font=("Arial", 12))
-style.configure("TButton", font=("Arial", 18, "bold"))
+style.configure("TFrame", background="black")
+style.configure("TLabel", background="black", foreground="white", font=("Arial", 14))
+style.configure("TEntry", font=("Arial", 14))
+style.configure("TButton", font=("Arial", 14, "bold"), relief="solid", borderwidth=0)
 
 style.map("TButton",
           background=[("active", "green"), ("disabled", "gray")],
           foreground=[("active", "green"), ("disabled", "gray")])
 
-frame_principal = ttk.Frame(ventana)
+frame_principal = ttk.Frame(ventana, style="TFrame")
 frame_principal.pack(expand=True, padx=20, pady=20)
 
 etiqueta_km = ttk.Label(frame_principal, text="Kilómetros:")
-etiqueta_km.pack()
+etiqueta_km.pack(pady=10)
 
-entrada_km = ttk.Entry(frame_principal)
+entrada_km = ttk.Entry(frame_principal, style="TEntry")
 entrada_km.pack()
 
 boton_convertir = ttk.Button(frame_principal, text="Convertir", command=convertir, style="TButton")
-boton_convertir.pack()
+boton_convertir.pack(pady=10)
 
 boton_salir = ttk.Button(frame_principal, text="Salir", command=salir, style="TButton")
-boton_salir.pack()
+boton_salir.pack(pady=10)
 
 ventana.mainloop()
