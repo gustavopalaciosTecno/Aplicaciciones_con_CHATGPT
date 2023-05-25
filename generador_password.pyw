@@ -11,6 +11,7 @@ class PasswordGeneratorApp(tk.Tk):
         super().__init__()
         self.title("Generador de Contraseñas")
         self.configure(bg="#009688")  # Color de fondo verde turquesa
+        self.geometry("400x400")  # Establecer tamaño de la ventana
         
         self.special_chars_var = tk.BooleanVar(value=True)  # Valor predeterminado: True
         
@@ -22,29 +23,32 @@ class PasswordGeneratorApp(tk.Tk):
         self.create_widgets()
     
     def create_widgets(self):
-        length_label = tk.Label(self, text="Longitud de la contraseña:", bg="#009688", fg="white")  # Color de fondo y texto blanco
+        # Establecer la fuente
+        font = ("Arial", 14)
+        
+        length_label = tk.Label(self, text="Longitud de la contraseña:", bg="#009688", fg="white", font=font)  # Color de fondo y texto blanco
         length_label.pack()
         
-        self.length_entry = tk.Entry(self)
+        self.length_entry = tk.Entry(self, font=font)
         self.length_entry.insert(tk.END, "12")  # Establecer longitud predeterminada a 12
         self.length_entry.pack()
         
-        special_chars_checkbox = tk.Checkbutton(self, text="Incluir caracteres especiales", variable=self.special_chars_var, bg="#009688", fg="white")  # Color de fondo y texto blanco
+        special_chars_checkbox = tk.Checkbutton(self, text="Incluir caracteres especiales", variable=self.special_chars_var, bg="#009688", fg="white", font=font)  # Color de fondo y texto blanco
         special_chars_checkbox.pack()
         
-        generate_button = tk.Button(self, text="Generar Contraseña", command=self.generate_password, bg="#4CAF50", fg="black")  # Color de fondo verde y texto blanco
+        generate_button = tk.Button(self, text="Generar Contraseña", command=self.generate_password, bg="#4CAF50", fg="black", font=font)  # Color de fondo verde y texto blanco
         generate_button.pack()
         
-        self.password_label = tk.Label(self, text="Contraseña generada:", bg="#009688", fg="white")  # Color de fondo y texto blanco
+        self.password_label = tk.Label(self, text="Contraseña generada:", bg="#009688", fg="white", font=font)  # Color de fondo y texto blanco
         self.password_label.pack()
         
-        self.password_entry = ttk.Entry(self, state="readonly")
+        self.password_entry = ttk.Entry(self, state="readonly", font=font)
         self.password_entry.pack()
         
-        copy_button = tk.Button(self, text="Copiar Contraseña", command=self.copy_password, bg="#4CAF50", fg="white")  # Color de fondo verde y texto blanco
+        copy_button = tk.Button(self, text="Copiar Contraseña", command=self.copy_password, bg="#4CAF50", fg="white", font=font)  # Color de fondo verde y texto blanco
         copy_button.pack()
         
-        exit_button = tk.Button(self, text="Salir", command=self.quit, bg="#F44336", fg="white")  # Color de fondo rojo y texto blanco
+        exit_button = tk.Button(self, text="Salir", command=self.quit, bg="#F44336", fg="white", font=font)  # Color de fondo rojo y texto blanco
         exit_button.pack()
     
     def generate_password(self):
@@ -76,3 +80,4 @@ class PasswordGeneratorApp(tk.Tk):
 if __name__ == "__main__":
     app = PasswordGeneratorApp()
     app.mainloop()
+
