@@ -32,7 +32,7 @@ class PasswordGeneratorApp(tk.Tk):
         special_chars_checkbox = tk.Checkbutton(self, text="Incluir caracteres especiales", variable=self.special_chars_var, bg="#009688", fg="white")  # Color de fondo y texto blanco
         special_chars_checkbox.pack()
         
-        generate_button = tk.Button(self, text="Generar Contraseña", command=self.generate_password, bg="#4CAF50", fg="white")  # Color de fondo verde y texto blanco
+        generate_button = tk.Button(self, text="Generar Contraseña", command=self.generate_password, bg="#4CAF50", fg="black")  # Color de fondo verde y texto blanco
         generate_button.pack()
         
         self.password_label = tk.Label(self, text="Contraseña generada:", bg="#009688", fg="white")  # Color de fondo y texto blanco
