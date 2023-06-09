@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+    <!-- Agrega el enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilo personalizado para centrar el formulario */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-6">
+            <h1>Lista de Tareas</h1>
+        
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar Tarea</button>
+            </form>
+    
+            {% if mensaje %}
+                <p>{{ mensaje }}</p>
+            {% endif %}
+    
+            {% if tareas %}
+                <h2>Tareas:</h2>
+                <ul>
+                    {% for tarea in tareas %}
+                        <li>{{ tarea.descripcion }} - Estado: {{ "Completada" if tarea.completada else "Pendiente" }}</li>
+                        <a href="/marcar_completada/{{ loop.index }}">Marcar como Completada</a> |
+                        <a href="/marcar_pendiente/{{ loop.index }}">Marcar como Pendiente</a> |
+                        <a href="/eliminar_tarea/{{ loop.index }}">Eliminar Tarea</a>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay tareas.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
