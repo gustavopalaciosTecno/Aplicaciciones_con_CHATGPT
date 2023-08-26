@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat con OpenAI</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Chat con OpenAI</h1>
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Escribe algo...">
+        <input type="submit" value="Enviar">
+    </form>
+    <div id="chat-container"></div>
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').submit(function(event) {
+                event.preventDefault();
+                var userInput = $('#user-input').val();
+                $.ajax({
+                    url: '/chat',
+                    type: 'POST',
+                    data: {user_input: userInput},
+                    success: function(response) {
+                        $('#chat-container').append('<p><strong>Tú:</strong> ' + userInput + '</p>');
+                        $('#chat-container').append('<p><strong>AI:</strong> ' + response.response + '</p>');
+                        $('#user-input').val('');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
